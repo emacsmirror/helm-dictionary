@@ -191,6 +191,11 @@ browser in `helm-browse-url-default-browser-alist'"
   :group 'helm-dictionary
   :type 'boolean)
 
+(defcustom helm-dictionary-reverse-candidates nil
+  "Reverse order of matched entries when non-nil."
+  :group 'helm-dictionary
+  :type 'boolean)
+
 (defcustom helm-dictionary-actions
   '(("Insert source language term" . helm-dictionary-insert-l1term)
     ("Insert target language term" . helm-dictionary-insert-l2term))
@@ -215,6 +220,8 @@ browser in `helm-browse-url-default-browser-alist'"
 
 (defun helm-dictionary-transformer (candidates _source)
   "Formats entries retrieved from the data base."
+  (when helm-dictionary-reverse-candidates
+    (setq candidates (reverse candidates)))
   (cl-loop for i in candidates
            with entry and l1terms and l2terms
            and width = (with-helm-window (helm-dictionary-window-width))

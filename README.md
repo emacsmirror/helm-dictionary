@@ -47,6 +47,10 @@ If the local dictionary doesn't have an entry for a word, it can be useful to tr
 
 The browser specified in `helm-dictionary-browser-function` will be used to show results from online dictionaries.  If this variable is nil (default), the value of the variable `browse-url-browser-function` will be used (the currently configured Emacs-wide default browser).  If that variable is also nil, helm uses the first available browser in `helm-browse-url-default-browser-alist`.
 
+### Reverse results order
+
+Set `helm-dictionary-reverse-candidates` to `t` to display the list of dictionary matches in reverse order.
+
 ## Usage
 
 Use the command `M-x helm-dictionary` to start a new search or bind `helm-dictionary` to a key.  As usual, a search is case-insensitive unless the expression contains capital letters.  Regular expressions can also be used as search terms.  Specifically, you can use `\b` to denote word boundaries when you want to search for complete words, e.g., `\bhouse\b` when you only want the entry for the word *house* but not entries like *household* and *workhouse*.
